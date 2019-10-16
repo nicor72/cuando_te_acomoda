@@ -30,7 +30,7 @@ type Reunion @model {
   id: ID! @isUnique
   name: String!
   options: [Option!]! @relation(name: "ReunionOption")
-  answers: [Answer!]! @relation(name: "ReunionAnswers")
+#   answers: [Answer!]! @relation(name: "ReunionAnswers")
   deleted: Boolean @defaultValue(value: "false")
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime!
@@ -41,7 +41,7 @@ type Option @model {
   reunion: Reunion! @relation(name: "ReunionOption")
   date: String!
   hour: String! @migrationValue(value: "8:00pm")
-  answer: Answer @relation(name: "OptionOnAnswer")
+  answers: [Answer!]! @relation(name: "OptionOnAnswer")
   deleted: Boolean @defaultValue(value: "false")
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime!
@@ -49,10 +49,10 @@ type Option @model {
 
 type Answer @model {
   id: ID! @isUnique
-  reunion: Reunion! @relation(name: "ReunionAnswers")
+#   reunion: Reunion! @relation(name: "ReunionAnswers")
   author: String!
   depto: Int!
-  selectedOptions: [Option!]! @relation(name: "OptionOnAnswer")
+  option: Option @relation(name: "OptionOnAnswer")
   deleted: Boolean @defaultValue(value: "false")
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime!
