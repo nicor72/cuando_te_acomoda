@@ -29,8 +29,9 @@ type Post @model {
 type Reunion @model {
   id: ID! @isUnique
   name: String!
+  description: String! @migrationValue(value: "Lorea El Ipsum Gila shilamediavola embarao zoronca calmao de vioh pero pa q po de vioh, paquepo y que saen de vio yuta shilamediavola la yuta de vio, me voy en cana matagatos saque corte deja ganarme ranazo. Odio hechiza oe hermano fineza conotao andai con meao pura falacia oe vendisuone canada bellako, de vio a treh deo de finales tapizao pasa paca coshino ql cuca pipazo canada calzar, jato gila rati choro perro chico chantar zarpao shilamediavola.")
+  where: String! @migrationValue(value: "En la piscina")
   options: [Option!]! @relation(name: "ReunionOption")
-#   answers: [Answer!]! @relation(name: "ReunionAnswers")
   deleted: Boolean @defaultValue(value: "false")
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime!
@@ -49,7 +50,6 @@ type Option @model {
 
 type Answer @model {
   id: ID! @isUnique
-#   reunion: Reunion! @relation(name: "ReunionAnswers")
   author: String!
   depto: Int!
   option: Option @relation(name: "OptionOnAnswer")
@@ -57,4 +57,3 @@ type Answer @model {
   createdAt: DateTime! # read-only (managed by Graphcool)
   updatedAt: DateTime!
 }
-
