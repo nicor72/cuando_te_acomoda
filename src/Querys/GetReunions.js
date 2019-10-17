@@ -8,7 +8,10 @@ export const GET_REUNIONS = gql`
             id
             date
             hour
-        } 
+            answers {
+                author
+            }
+        }
     }
   }
 `;

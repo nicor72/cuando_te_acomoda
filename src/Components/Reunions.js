@@ -87,7 +87,9 @@ const Reunions = () => {
                 : (date.length > 0) &&
                     <AnswerForm
                         handleSubmit={handleSubmit}
+                        nombre={nombre}
                         setNombre={setNombre}
+                        depto={depto}
                         setDepto={setDepto}
                         setDate={setDate}
                     />

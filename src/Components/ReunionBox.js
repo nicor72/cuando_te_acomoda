@@ -7,7 +7,7 @@ const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
     return(
         <>
             <Column className="has-text-centered">
-                <Title>Proxima Reunión</Title>
+                <Title>Próxima Reunión</Title>
             </Column>    
 
             <Column className="is-half is-offset-one-quarter">
@@ -62,7 +62,7 @@ const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
                     onClick={e => setCanIGo(!canIGo)}
                 >
                     {
-                        !canIGo ? 'Si, Quiero ir!' : 'No gracias.'
+                        !canIGo ? 'Sí, quiero ir! ☝️' : 'No, gracias.'
                     }
                 </Button>
             </Column>
