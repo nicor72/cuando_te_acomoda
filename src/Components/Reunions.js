@@ -62,7 +62,7 @@ const Reunions = () => {
     }
     
     return(
-        <Container style={{margin: '3em'}}>
+        <Container style={{margin: '1em'}}>
             {
                 submitted ?
                     <SubmitedMessage />
