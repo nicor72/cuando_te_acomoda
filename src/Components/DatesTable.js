@@ -6,6 +6,10 @@ const DatesTable = ({dates, options, setOptions, canIGo, setCanIGo, setDate}) =>
     const [disabled, setDisabled] = useState(true)
 
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+    useEffect(() => {
         for (var opt in options) {
             if (options[opt]) {
                 setDisabled(false)
