@@ -3,7 +3,8 @@ import React, {useState, useEffect} from 'react';
 // Dependencies
 import "rbx/index.css";
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { Container } from "rbx";
+import { Container, Column, Notification, Section } from "rbx";
+import { SwapSpinner } from "react-spinners-kit";
 // Components
 import SubmitedMessage from './SubmitedMessage'
 import ReunionBox from './ReunionBox'
@@ -37,7 +38,12 @@ const Reunions = () => {
         }
     }, [data])
 
-    if (loading) return 'Loading...';
+    if (loading) return <div style={{position: "absolute", width: "100px", height: "50px", top: "50%", left: "50%", marginTop: "-25px", marginLeft: "-50px"}}>
+                            <SwapSpinner size={30}
+                                color="black"
+                                loading={true}
+                            />
+                        </div>;
     if (error) return `Error! ${error.message}`;
     
     const handleSubmit = (e) => {
