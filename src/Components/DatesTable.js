@@ -98,6 +98,8 @@ const DatesTable = ({dates, options, setOptions, canIGo, setCanIGo, setDate}) =>
                     }
                     startAngle={90}
                     endAngle={-90}
+                    width={500}
+                    // height={'2000px'}
                 />
             </Column>            
         </>  

@@ -74,7 +74,12 @@ const AnswerForm = ({handleSubmit, nombre, setNombre, depto, setDepto, setDate})
 
             <Column className="has-text-centered">
                 <Button
-                    onClick={e => setDate('')}
+                    onClick={
+                        e => {
+                            e.preventDefault()
+                            setDate('')
+                        }
+                    }
                 >
                     Volver
                 </Button>
