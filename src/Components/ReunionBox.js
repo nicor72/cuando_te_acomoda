@@ -1,6 +1,10 @@
 import React from 'react';
 import { Column, Title, Card, Media, Image, Content, Button } from "rbx";
 
+// Images
+import logo from './../Assets/Images/logo_pocuro_view.png'
+import place from './../Assets/Images/sala_eventos.jpg'
+
 const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
     return(
         <>
@@ -12,7 +16,7 @@ const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
                     <Card>
                         <Card.Image>
                             <Image.Container size="3by2">
-                            <Image src="https://bulma.io/images/placeholders/1280x960.png" />
+                            <Image src={place} />
                             </Image.Container>
                         </Card.Image>
                         <Card.Content>
@@ -21,7 +25,7 @@ const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
                                 <Image.Container as="p" size={64}>
                                 <Image
                                     alt="64x64"
-                                    src="https://bulma.io/images/placeholders/128x128.png"
+                                    src={logo}
                                 />
                                 </Image.Container>
                             </Media.Item>
