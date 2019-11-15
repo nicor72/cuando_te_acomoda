@@ -92,16 +92,19 @@ const DatesTable = ({dates, options, setOptions, canIGo, setCanIGo, setDate}) =>
                 </Button>
             </Column>
 
-            <Column className="is-half is-offset-one-quarter has-text-centered">
+            <Column className="is-half is-offset-one-quarter has-text-centered" style={{maxHeight: '25em'}}>
                 <VictoryPie
                     colorScale={["tomato", "orange", "gold", "cyan", "navy" ]}
                     data={
                         dates.options.map((opt, i) => {
-                            return {x: 'Opción ' + (i + 1), y: opt.answers.length}
+                            return {x: i, y: opt.answers.length, label: 'Opción ' + (i + 1)}
                         })
                     }
+                    // labels={({ datum }) => `${datum.x}: ${datum.y} votos`}
                     startAngle={90}
                     endAngle={-90}
+                    sortKey="x"
+                    sortOrder="descending"
                     width={500}
                 />
             </Column>            

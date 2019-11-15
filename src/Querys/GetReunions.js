@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export const GET_REUNIONS = gql`
   {
     allReunions(first: 1){
+        id
         name
         description
         where
@@ -12,6 +13,7 @@ export const GET_REUNIONS = gql`
             hour
             answers {
                 author
+                depto
             }
         }
     }
