@@ -11,8 +11,8 @@ const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
             {/* <Column className="has-text-centered">
                 <Title>Próxima Reunión</Title>
             </Column>     */}
-            <Column.Group centered>
-                <Column className="is-mobile is-half">
+            {/* <Column.Group > */}
+                <Column size={6} offset={3}>
                     <Card>
                         <Card.Image>
                             <Image.Container size="3by2">
@@ -44,7 +44,7 @@ const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
                         </Card.Content>
                     </Card>
                 </Column>
-            </Column.Group>
+            {/* </Column.Group> */}
             
             <Column.Group centered>
                 <Column className="is-half has-text-centered">

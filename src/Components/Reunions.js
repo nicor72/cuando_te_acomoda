@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 // Dependencies
 import "rbx/index.css";
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { Container, Column, Notification, Section } from "rbx";
+import { Container, Section, Column, Progress } from "rbx";
 import { SwapSpinner } from "react-spinners-kit";
 // Components
 import SubmitedMessage from './SubmitedMessage'
@@ -17,7 +17,7 @@ import { CREATE_ANSWER } from './../Querys/CreateAnswer'
 const Reunions = () => {
 
     const { loading, error, data } = useQuery(GET_REUNIONS);
-    const [createAnswer, { response }] = useMutation(CREATE_ANSWER);
+    const [createAnswer] = useMutation(CREATE_ANSWER);
     const [canIGo, setCanIGo] = useState(false)
     const [date, setDate] = useState('')
     const [nombre, setNombre] = useState('')
@@ -38,12 +38,13 @@ const Reunions = () => {
         }
     }, [data])
 
-    if (loading) return <div style={{position: "absolute", width: "100px", height: "50px", top: "50%", left: "50%", marginTop: "-25px", marginLeft: "-50px"}}>
-                            <SwapSpinner size={30}
-                                color="black"
-                                loading={true}
-                            />
-                        </div>;
+    if (loading) return <Section size="large">
+                            <Column className="is-half is-offset-one-quarter has-text-centered">
+                                <Column size={4} offset={4}>
+                                    <Progress size="small" color="primary"/>
+                                </Column>
+                            </Column>
+                        </Section>
     if (error) return `Error! ${error.message}`;
     
     const handleSubmit = (e) => {
@@ -68,7 +69,7 @@ const Reunions = () => {
     }
     
     return(
-        <Container style={{margin: '1em'}}>
+        <>
             {
                 submitted ?
                     <SubmitedMessage />
@@ -100,7 +101,7 @@ const Reunions = () => {
                         setDate={setDate}
                     />
             }
-        </Container>
+        </>
     )
 }
 

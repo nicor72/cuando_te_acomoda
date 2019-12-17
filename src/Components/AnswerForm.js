@@ -1,11 +1,11 @@
 import React, { useState, useEffect }from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faCheck, faLock} from '@fortawesome/free-solid-svg-icons'
-import { Column, Title, Button, Field, Control, Input, Icon, Message} from "rbx";
+import { Column, Title, Button, Field, Control, Input, Icon } from "rbx";
 
 const AnswerForm = ({handleSubmit, nombre, setNombre, depto, setDepto, setDate}) => {
     const [disabled, setDisabled] = useState(true)
-    const [error, setError] = useState(false)
+    // const [error, setError] = useState(false)
  
     useEffect(() => {
         if (nombre !== '' && depto !== '') {
@@ -22,12 +22,12 @@ const AnswerForm = ({handleSubmit, nombre, setNombre, depto, setDepto, setDate})
             </Column>
 
             {
-                error &&
-                <Message color="danger">
-                    <Message.Body className="has-text-centered">
-                        Completa los datos para continuar.
-                    </Message.Body>
-                </Message>
+                // error &&
+                // <Message color="danger">
+                //     <Message.Body className="has-text-centered">
+                //         Completa los datos para continuar.
+                //     </Message.Body>
+                // </Message>
             }
 
             <Column className="is-half is-offset-one-quarter">      
