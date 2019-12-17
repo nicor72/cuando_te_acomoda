@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [activeTab, setActiveTab] = useState('');
     const [options, setOptions] = useState({})
     const [reunion, setReunion] = useState({})
-    const { loading, error, data } = useQuery(GET_REUNIONS);
+    const { loading, data } = useQuery(GET_REUNIONS);
 
     useEffect(() => {
         if (typeof data !== "undefined" && reunionSelected !== '' ) {

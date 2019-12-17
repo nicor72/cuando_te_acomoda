@@ -3,8 +3,7 @@ import React, {useState, useEffect} from 'react';
 // Dependencies
 import "rbx/index.css";
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { Container, Section, Column, Progress } from "rbx";
-import { SwapSpinner } from "react-spinners-kit";
+import { Section, Column, Progress } from "rbx";
 // Components
 import SubmitedMessage from './SubmitedMessage'
 import ReunionBox from './ReunionBox'

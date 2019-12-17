@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { SwapSpinner } from "react-spinners-kit";
-import { Column, Table, Section } from "rbx";
+import { Column, Table } from "rbx";
 import { VictoryPie } from "victory";
 
 const Results = ({options}) => {

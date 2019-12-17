@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { SwapSpinner } from "react-spinners-kit";
 import { Column, Navbar, Button, Footer, Content, Section, Progress } from "rbx";
 
 import Dashboard from './Dashboard'
@@ -10,7 +9,7 @@ import { LOGGED_IN_USER } from './../Querys/LoggedInUser'
 import { AUTH_USER } from './../Querys/AuthUser'
 
 const AdminPanel = () => {
-    const { data: queryData, loading: queryLoading, error: queryError } = useQuery(LOGGED_IN_USER);
+    const { data: queryData, loading: queryLoading } = useQuery(LOGGED_IN_USER);
     const [authenticateUser, { data: mutationData, loading: mutationLoading, error: mutationError }] = useMutation(AUTH_USER);
 
     const [email, setEmail] = useState('');

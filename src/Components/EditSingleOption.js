@@ -13,13 +13,13 @@ const EditSingleOption = ({index, options, setOptions}) => {
     const [editingInput, setEditingInput] = useState('');
     const ref = useRef(null)
 
-    const [updateOption, { data, loading, error }] = useMutation(UPDATE_OPTION);
+    const [updateOption] = useMutation(UPDATE_OPTION);
     const [deleteOption] = useMutation(DELETE_OPTION);
 
     useEffect(() => {
         setDate(options[index].date);
         setHour(options[index].hour);
-    }, [options])
+    }, [options, index])
 
     const onBlur = () => {
         updateOption({

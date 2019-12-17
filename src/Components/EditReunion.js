@@ -16,7 +16,7 @@ const EditReunion = ({reunion, setReunion}) => {
     const [description, setDescription] = useState(reunion.description);
     const inputName = useRef(null);
 
-    const [updateReunion, { data, loading, error }] = useMutation(UPDATE_REUNION);
+    const [updateReunion] = useMutation(UPDATE_REUNION);
 
     useEffect(() => {
         console.log(inputName.current)
