@@ -1,14 +1,54 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import { useMutation } from '@apollo/react-hooks'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
-import { Column, Button, Field, Control, Input, Icon } from "rbx";
+import { Column, Button, Field, Control, Input, Icon, Section, Progress, Title } from "rbx"
 
+import { AUTH_USER } from './../Querys/AuthUser'
 
-const Login = ({handleSubmit, setEmail, setPassword}) => {
+const Login = ({setIsLogin}) => {
+
+    const [authenticateUser, { data, loading, error }] = useMutation(AUTH_USER);
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    useEffect(() => {
+        if (typeof data !== 'undefined') {
+            window.localStorage.setItem("token", data.authenticateUser.token);
+            setIsLogin(true)
+        }
+    }, [data]) 
+
+    if (loading) 
+        return <Section size="large">
+                    <Column className="is-half is-offset-one-quarter has-text-centered">
+                        <Column size={4} offset={4}>
+                            <Progress size="small" color="primary"/>
+                        </Column>
+                    </Column>
+                </Section>
+    if (error) return `Error! ${error.message}`;
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        authenticateUser({
+            variables: {
+                email: email, 
+                password: password,
+            }
+        })
+    }
 
     return(
         <>
             <form onSubmit={handleSubmit}>
+                
+                <Column className="has-text-centered">
+                    <Title>Ingresa tus datos</Title>  
+                </Column>
+
                 <Column className="is-half is-offset-one-quarter">      
                     <Field>
                         <Control iconLeft iconRight>
@@ -38,7 +78,7 @@ const Login = ({handleSubmit, setEmail, setPassword}) => {
 
                 <Column className="has-text-centered">    
                     <Button color="primary">
-                        <strong>Sign up</strong>
+                        <strong>Log in</strong>
                     </Button>
                 </Column>
             </form>

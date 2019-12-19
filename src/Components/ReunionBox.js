@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { Column, Title, Card, Media, Image, Content, Button } from "rbx";
 
 // Images
@@ -14,11 +13,11 @@ const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
             </Column>     */}
             {/* <Column.Group > */}
                 <Column size={6} offset={3}>
-                    <Column offset={11}>
+                    {/* <Column offset={11}>
                         <Link 
                             to="/imanadmin"
                         >Admin</Link>
-                    </Column>
+                    </Column> */}
                     <Card>
                         <Card.Image>
                             <Image.Container size="3by2">

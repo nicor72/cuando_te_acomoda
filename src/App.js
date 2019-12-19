@@ -1,40 +1,107 @@
-import React from 'react';
-import './App.scss';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo'
-import {
-    BrowserRouter as Router,
-    Route
-  } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import './App.scss'
+import { useQuery } from '@apollo/react-hooks'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { Column, Navbar, Button, Footer, Content } from "rbx"
+
+import { LOGGED_IN_USER } from './Querys/LoggedInUser'  
 
 import Reunions from './Components/Reunions'
-import AdminPanel from './Components/AdminPanel'
-
-const client = new ApolloClient({
-  uri: 'https://api.graph.cool/simple/v1/ck14da22p0s3c0168xi7w3dro',
-  request: (operation) => {
-    const token = window.localStorage.getItem('token')
-    operation.setContext({
-      headers: {
-        authorization: token ? `Bearer ${token}` : ''
-      }
-    })
-  }
-});
+import Dashboard from './Components/Dashboard'
+import Login from './Components/Login'
 
 function App() {
-  return (
-    <ApolloProvider client={client}>
+    const { data: queryData, loading: queryLoading } = useQuery(LOGGED_IN_USER);
+
+    const [isLogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        if (typeof queryData !== 'undefined' && queryData.loggedInUser !== null) {
+            setIsLogin(true)
+        }
+    }, [queryData])
+
+    return (
         <Router>
+            <Column className="is-half is-offset-one-quarter has-text-centered">
+                <Navbar color="warning">
+                    <Navbar.Brand>
+                        <Navbar.Item href="#">
+                            <img
+                            src="https://bulma.io/images/bulma-logo.png"
+                            alt=""
+                            role="presentation"
+                            width="112"
+                            height="28"
+                            />
+                        </Navbar.Item>
+                        <Navbar.Burger />
+                    </Navbar.Brand>
+                    
+                    <Navbar.Menu>
+                        <Navbar.Segment align="start">
+                            <Navbar.Item>
+                                <Link to="/" style={{ color: 'black' }}>
+                                    Inicio
+                                </Link>
+                            </Navbar.Item>
+                            <Navbar.Item>
+                                <Link to="/imanadmin" style={{ color: 'black' }}>
+                                    Administrador
+                                </Link>
+                            </Navbar.Item>
+                        </Navbar.Segment>
+
+                        <Navbar.Segment align="end">
+                            <Navbar.Item>
+                            {
+                                isLogin &&
+                                    <Button 
+                                        color="light" 
+                                        onClick={() => {window.localStorage.removeItem("token"); window.location.reload();}}
+                                    >
+                                        Log out
+                                    </Button>
+                            }
+                            </Navbar.Item>
+                        </Navbar.Segment>
+                    </Navbar.Menu>
+                </Navbar>
+            </Column>
+            
             <Route exact path="/">
                 <Reunions />
             </Route>
+            
             <Route path="/imanadmin">
-                <AdminPanel />
+                <div style={{flex: 1, marginBottom: '2em'}}>
+                    {
+                        isLogin ?
+                            <Dashboard />
+                        :
+                            <Login
+                                setIsLogin={setIsLogin}
+                            /> 
+                    }
+                </div>
             </Route>
+
+            <Column className="is-half is-offset-one-quarter has-text-centered">
+                <Footer>
+                    <Content textAlign="centered">
+                        <p>
+                            <strong>¿Cuándo te acomoda?</strong> by {' '}
+                            <a href="http://nicolasroman.com" target="_blank" rel="noopener noreferrer">Nicolás Román</a>.
+                            Source code is available{' '}
+                            <a href="https://github.com/nicor72/cuando_te_acomoda" target="_blank" rel="noopener noreferrer">
+                                here
+                            </a>.
+                        </p>
+                    </Content>
+                </Footer>
+            </Column>
         </Router>
-    </ApolloProvider>
-  );
+    );
 }
 
 export default App;
