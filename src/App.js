@@ -58,7 +58,7 @@ function App() {
                                 isLogin &&
                                     <Button 
                                         color="light" 
-                                        onClick={() => {window.localStorage.removeItem("token"); window.location.reload();}}
+                                        onClick={() => {window.localStorage.removeItem("token"); window.location.replace('/');}}
                                     >
                                         Log out
                                     </Button>
