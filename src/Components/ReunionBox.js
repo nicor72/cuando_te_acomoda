@@ -8,48 +8,38 @@ import place from './../Assets/Images/sala_eventos.jpg'
 const ReunionBox = ({reunion, canIGo, setCanIGo}) => {
     return(
         <>
-            {/* <Column className="has-text-centered">
-                <Title>Próxima Reunión</Title>
-            </Column>     */}
-            {/* <Column.Group > */}
-                <Column size={6} offset={3}>
-                    {/* <Column offset={11}>
-                        <Link 
-                            to="/imanadmin"
-                        >Admin</Link>
-                    </Column> */}
-                    <Card>
-                        <Card.Image>
-                            <Image.Container size="3by2">
-                            <Image src={place} />
+            <Column size={6} offset={3}>
+                <Card>
+                    <Card.Image>
+                        <Image.Container size="3by2">
+                        <Image src={place} />
+                        </Image.Container>
+                    </Card.Image>
+                    <Card.Content>
+                        <Media>
+                        <Media.Item as="figure" align="left">
+                            <Image.Container as="p" size={64}>
+                            <Image
+                                alt="64x64"
+                                src={logo}
+                            />
                             </Image.Container>
-                        </Card.Image>
-                        <Card.Content>
-                            <Media>
-                            <Media.Item as="figure" align="left">
-                                <Image.Container as="p" size={64}>
-                                <Image
-                                    alt="64x64"
-                                    src={logo}
-                                />
-                                </Image.Container>
-                            </Media.Item>
-                            <Media.Item>
-                                <Title as="p" size={4}>
-                                    {reunion.name}
-                                </Title>
-                                <Title as="p" subtitle size={6}>
-                                    @{reunion.where}
-                                </Title>
-                            </Media.Item>
-                            </Media>
-                            <Content>
-                                {reunion.description}
-                            </Content>
-                        </Card.Content>
-                    </Card>
-                </Column>
-            {/* </Column.Group> */}
+                        </Media.Item>
+                        <Media.Item>
+                            <Title as="p" size={4}>
+                                {reunion.name}
+                            </Title>
+                            <Title as="p" subtitle size={6}>
+                                @{reunion.where}
+                            </Title>
+                        </Media.Item>
+                        </Media>
+                        <Content>
+                            {reunion.description}
+                        </Content>
+                    </Card.Content>
+                </Card>
+            </Column>
             
             <Column.Group centered>
                 <Column className="is-half has-text-centered">

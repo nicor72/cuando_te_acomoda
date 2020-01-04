@@ -19,7 +19,7 @@ const EditOptions = ({ options, setOptions, reunionId }) => {
 
     return(
         <>
-            <Column className="is-half is-offset-one-quarter has-text-centered">
+            <Column className="is-half is-offset-one-quarter has-text-centered is-hidden-mobile">
                 <Column.Group>
                     <Column size={2}>
                         Opción
@@ -44,7 +44,7 @@ const EditOptions = ({ options, setOptions, reunionId }) => {
                     />
                 )
             }
-
+            
             {
                 loading &&
                 <Column className="is-half is-offset-one-quarter has-text-centered">

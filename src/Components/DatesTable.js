@@ -39,7 +39,7 @@ const DatesTable = ({dates, options, setOptions, canIGo, setCanIGo, setDate}) =>
                 <Table striped hoverable fullwidth>
                     <Table.Head>
                         <Table.Row>
-                        <Table.Heading>Opción</Table.Heading>
+                        <Table.Heading className="is-hidden-mobile">Opción</Table.Heading>
                         <Table.Heading>Día</Table.Heading>
                         <Table.Heading>Hora</Table.Heading>
                         <Table.Heading></Table.Heading>
@@ -49,7 +49,7 @@ const DatesTable = ({dates, options, setOptions, canIGo, setCanIGo, setDate}) =>
                         {
                             dates.options.map((option, i) =>
                                 <Table.Row key={option.id}>
-                                    <Table.Cell>{i + 1}</Table.Cell>
+                                    <Table.Cell className="is-hidden-mobile">{i + 1}</Table.Cell>
                                     <Table.Cell>{option.date}</Table.Cell>
                                     <Table.Cell>{option.hour}</Table.Cell>
                                     <Table.Cell>
@@ -92,7 +92,7 @@ const DatesTable = ({dates, options, setOptions, canIGo, setCanIGo, setDate}) =>
                 </Button>
             </Column>
 
-            <Column className="is-half is-offset-one-quarter has-text-centered" style={{maxHeight: '25em'}}>
+            <Column className="is-half is-offset-one-quarter has-text-centered is-hidden-mobile" style={{maxHeight: '25em'}}>
                 <VictoryPie
                     colorScale={["tomato", "orange", "gold", "cyan", "navy" ]}
                     data={

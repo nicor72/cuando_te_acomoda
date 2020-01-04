@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './App.scss'
 import { useQuery } from '@apollo/react-hooks'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import { Column, Navbar, Button, Footer, Content } from "rbx"
 
 import { LOGGED_IN_USER } from './Querys/LoggedInUser'  
@@ -11,7 +11,7 @@ import Dashboard from './Components/Dashboard'
 import Login from './Components/Login'
 
 function App() {
-    const { data: queryData, loading: queryLoading } = useQuery(LOGGED_IN_USER);
+    const { data: queryData } = useQuery(LOGGED_IN_USER);
 
     const [isLogin, setIsLogin] = useState(false);
 
@@ -40,15 +40,11 @@ function App() {
                     
                     <Navbar.Menu>
                         <Navbar.Segment align="start">
-                            <Navbar.Item>
-                                <Link to="/" style={{ color: 'black' }}>
-                                    Inicio
-                                </Link>
+                            <Navbar.Item href="/">
+                                Inicio
                             </Navbar.Item>
-                            <Navbar.Item>
-                                <Link to="/imanadmin" style={{ color: 'black' }}>
-                                    Administrador
-                                </Link>
+                            <Navbar.Item href="/imanadmin">
+                                Administrador
                             </Navbar.Item>
                         </Navbar.Segment>
 
@@ -91,7 +87,7 @@ function App() {
                     <Content textAlign="centered">
                         <p>
                             <strong>¿Cuándo te acomoda?</strong> by {' '}
-                            <a href="http://nicolasroman.com" target="_blank" rel="noopener noreferrer">Nicolás Román</a>.
+                            <a href="https://cl.linkedin.com/in/nicolasromanhernandez" target="_blank" rel="noopener noreferrer">Nicolás Román</a>.
                             Source code is available{' '}
                             <a href="https://github.com/nicor72/cuando_te_acomoda" target="_blank" rel="noopener noreferrer">
                                 here

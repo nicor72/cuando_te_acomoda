@@ -14,16 +14,23 @@ const EditReunion = ({reunion, setReunion}) => {
     const [name, setName] = useState(reunion.name);
     const [where, setWhere] = useState(reunion.where);
     const [description, setDescription] = useState(reunion.description);
-    const inputName = useRef(null);
+    const inputName = useRef(null)
+    const inputWhere = useRef(null)
+    const inputDescription = useRef(null)
 
     const [updateReunion] = useMutation(UPDATE_REUNION);
 
     useEffect(() => {
-        console.log(inputName.current)
-        if (inputName.current !== null) {
+        if (editingInput === 'name') {
             inputName.current.focus()
         }
-    }, [inputName])
+        if (editingInput === 'where') {
+            inputWhere.current.focus()
+        }
+        if (editingInput === 'description') {
+            inputDescription.current.focus()
+        }
+    }, [editingInput])
 
     const onBlur = () => {
         updateReunion({
@@ -107,7 +114,8 @@ const EditReunion = ({reunion, setReunion}) => {
                                         </Icon>
                                     </Title>
                                     <Input 
-                                        value={where} 
+                                        ref={inputWhere}
+                                        value={where}
                                         onChange={e => setWhere(e.target.value)}
                                         onBlur={onBlur} 
                                         style={{display: editingInput === 'where' ? '' : 'none' }}
@@ -116,7 +124,8 @@ const EditReunion = ({reunion, setReunion}) => {
                                 </Media.Item>
                             </Media>
 
-                            <Textarea 
+                            <Textarea
+                                ref={inputDescription}
                                 value={description} 
                                 onChange={e => setDescription(e.target.value)}
                                 onBlur={onBlur} 

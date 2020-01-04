@@ -4,6 +4,8 @@ import { VictoryPie } from "victory";
 
 const Results = ({options}) => {
 
+    options = options.filter(opt => opt.answers.length)
+
     const [selectedOptions, setSelectedOptions] = useState(options)
 
     return(
@@ -25,7 +27,8 @@ const Results = ({options}) => {
                     events={[{
                         target: "data",
                         eventHandlers: {
-                          onClick: () => {
+                          onClick: (e) => {
+                            // e.persist()
                             return [
                               {
                                 target: "data",
